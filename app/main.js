@@ -32,7 +32,8 @@ let createWindow = () => {
         minHeight: 700,
         // resizable: false,//禁止改变窗口大小
         icon: __dirname + '/icon/logo.png',//修改图标
-        skipTaskbar: false,
+        // skipTaskbar: false,//隐藏图标
+        // kiosk:true, //默认全屏
         frame: false//设置成frame模式
         // API : https://github.com/electron/electron/blob/master/docs-translations/zh-CN/api/frameless-window.md
         // title:hidden
@@ -123,9 +124,9 @@ Menu.setApplicationMenu(menu);
 
 //打包asar发布的时候 请注释
 //自动刷新
-require('electron-reload')(__dirname, {
-    electron: require('electron-prebuilt')
-});
+// require('electron-reload')(__dirname, {
+//     electron: require('electron-prebuilt')
+// });
 
 //
 // app.on('will-quit', function () {
