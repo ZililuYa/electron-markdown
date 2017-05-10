@@ -1,6 +1,6 @@
-### electron-hosts
+### electron-markdown
 
-![electron-hosts](http://ww4.sinaimg.cn/large/006HJ39wgy1ffcu5q3iawj30rs0jgdg6.jpg)
+![electron-markdown](http://i1.piimg.com/588926/218cb943cfa65af5.png)
 
 ``` bash
 $ npm install
