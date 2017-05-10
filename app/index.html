@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Electron Markdown</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+
+<header id="header" class="header">
+    Markdown
+    <div class="tool">
+        <span class="t ico1" id="min"></span>
+        <span class="t ico2" id="max"></span>
+        <span class="t ico3" id="close"></span>
+    </div>
+
+</header>
+
+<div class="container" id="container">
+    <textarea class="div textarea" id="md" onkeyup="keyUp()">
+> [Hello , Markdown](https://github.com/nesfe/electron-markdown)
+# 一级标题
+## 二级标题
+### 三级标题
+#### 四级标题
+##### 五级标题
+###### 六级标题
+
+打开文件 `Ctrl + O`
+
+保存文件 `Ctrl + S`
+    </textarea>
+    <div class="div markdown" id="html">.</div>
+</div>
+
+<script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>
