@@ -17,14 +17,14 @@ ipcMain.on('synchronous-message', (event, arg) => {
 
 
 //打开文件
-ipcMain.on('openFile', (event, arg) => {
-    shell.openItem(arg);
-});
-
-//打开网站
-ipcMain.on('openUrl', (event, arg) => {
-    shell.openExternal(arg);
-});
+// ipcMain.on('openFile', (event, arg) => {
+//     shell.openItem(arg);
+// });
+//
+// //打开网站
+// ipcMain.on('openUrl', (event, arg) => {
+//     shell.openExternal(arg);
+// });
 
 
 //-------------------
@@ -61,10 +61,8 @@ ipcMain.on('getHosts', (event, arg) => {
 });
 
 //保存Hosts
-ipcMain.on('saveHosts', (event, arg) => {
-    fs.writeFile(hosts, arg, 'utf-8', function (err) {
-        !err ? event.sender.send('setHostsInfo', '200') : event.sender.send('setHostsInfo', '500');
-    });
+ipcMain.on('save', (event, arg) => {
+    require('./globalShortcut').saveMd(arg);
 });
 
 module.exports = (app, win) => {
@@ -82,3 +80,4 @@ module.exports = (app, win) => {
         win.minimize();
     });
 };
+

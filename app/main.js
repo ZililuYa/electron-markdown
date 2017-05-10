@@ -1,11 +1,6 @@
 //electrin
 const electrin = require('electron');
 
-//对话窗口
-const dialog = electrin.dialog;
-
-//键盘控制
-const globalShortcut = electrin.globalShortcut;
 
 //控制应用生命周期的模块
 const {app} = electrin;
@@ -59,20 +54,10 @@ let createWindow = () => {
     //不显示菜单栏
     win.setMenu(null);
 
-    globalShortcut.register('Alt+Z', () => {
-        app.quit();
-    });
-    globalShortcut.register('Ctrl+O', () => {
-        app.quit();
-    });
-
-    //触发调试 Alt+F12
-    globalShortcut.register('Alt+F12', () => {
-        win.webContents.openDevTools();
-    });
-
     //调试
     // win.webContents.openDevTools();
+
+    require('./controller/globalShortcut').init(app, win);
     require('./controller/ipcMain')(app, win);
 };
 

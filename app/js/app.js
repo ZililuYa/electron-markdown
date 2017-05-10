@@ -7,9 +7,22 @@ const markdown = require('markdown').markdown;
 // ipcRenderer.send('getHosts', '');
 //
 // //设置web端回调
-// ipcRenderer.on('setHosts', (event, arg) => {
-//     setListData(arg);
-// });
+ipcRenderer.on('save', (event, arg) => {
+    keyUp();
+    ipcRenderer.send('save', md.value);
+});
+
+// //设置web端回调
+ipcRenderer.on('updateFilePath', (event, arg) => {
+    savePath.innerHTML = '[ ' + arg + ' ]';
+});
+
+//打开文件
+ipcRenderer.on('openFile', (event, arg) => {
+    md.value = arg;
+    keyUp();
+});
+
 
 let container = document.getElementById('container');
 let md = document.getElementById('md');
@@ -18,13 +31,11 @@ let min = document.getElementById('min');
 let max = document.getElementById('max');
 let close = document.getElementById('close');
 let header = document.getElementById('header');
-
+let savePath = document.getElementById('savePath');
 
 let keyUp = () => {
     let htmlCode = markdown.toHTML(md.value);
-    console.log(html, md.value);
     html.innerHTML = htmlCode;
-    // html.appendChild()
 };
 keyUp();
 // container.find
@@ -40,10 +51,6 @@ max.onclick = () => {
 
 close.onclick = () => {
     ipcRenderer.send('close', '');
-};
-
-header.ondblclick = () => {
-    alert(1);
 };
 
 

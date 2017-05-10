@@ -36,7 +36,7 @@
     -webkit-app-region: no-drag;
 }
 .header .tool .tn:hover{
-    opacity: 01;
+    opacity: 1;
 }
 .header .tool .tn.ico1{
     background-image: url("image/1.png");
@@ -55,14 +55,26 @@
 input,button,select,textarea{outline:none}
 textarea{resize:none}
 
+#savePath{
+    width: 600px;
+    overflow: hidden;
+    display: inline-block;
+    opacity: 0.5;
+    padding-left: 15px;
+}
+.header .title{
+    display: inline-block;
+    float: left;
+    line-height: 50px;
+}
+
 .container .div{
     width: 50%;
     float: left;
     padding: 30px;
     border: 0;
     background-color: #fff;
-    overflow: hidden;
-    overflow-y: scroll;
+    /*overflow: hidden;*/
 }
 
 .container .div:last-child{
