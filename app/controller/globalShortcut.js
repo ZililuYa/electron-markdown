@@ -8,10 +8,14 @@ const globalShortcut = electrin.globalShortcut;
 
 let nowFile = 0;
 let win;
+let gsNow = 0;
 
 exports.init = (app, oldWin) => {
     win = oldWin;
     globalShortcut.register('Ctrl+O', () => {
+        if (gsNow != 0)
+            return;
+        gsNow = 1;
         dialog.showOpenDialog(
             win,
             {
@@ -33,10 +37,14 @@ exports.init = (app, oldWin) => {
                         }
                     });
                 }
+                gsNow = 0;
             }
         );
     });
     globalShortcut.register('Ctrl+S', () => {
+        if (gsNow != 0)
+            return;
+        gsNow = 1;
         win.webContents.send('save', '');
     });
 
@@ -64,6 +72,7 @@ exports.saveMd = (md) => {
                     win.webContents.send('updateFilePath', nowFile);
                     saveFileMd(md);
                 }
+                gsNow = 0;
             }
         );
     } else {
