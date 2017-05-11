@@ -4,7 +4,7 @@
   "description": "",
   "main": "app/main.js",
   "scripts": {
-    "start": "webpack && electron .",
+    "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "pack": "asar pack ../electron-hosts app.asar",
     "packager": "electron-packager ./ markdown --platform=win32 --arch=x64 --icon=./app/icon/logo.ico --asar --out=./dist --ignore=.gitignore --ignore=node_modules --download.mirror=https://npm.taobao.org/mirrors/electron/"
@@ -25,6 +25,7 @@
     "electron-prebuilt": "^1.4.13",
     "electron-reload": "^1.1.0",
     "fs": "^0.0.1-security",
+    "fs-extra": "^3.0.1",
     "webpack": "^2.5.1"
   },
   "dependencies": {

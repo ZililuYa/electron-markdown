@@ -71,8 +71,10 @@ exports.saveMd = (md) => {
                     nowFile = data;
                     win.webContents.send('updateFilePath', nowFile);
                     saveFileMd(md);
+                }else{
+                    gsNow = 0;
                 }
-                gsNow = 0;
+
             }
         );
     } else {
@@ -84,4 +86,5 @@ exports.saveMd = (md) => {
 let saveFileMd = (md) => {
     fs.writeFile(nowFile, md, 'utf-8', function (err) {
     });
-}
+    gsNow = 0;
+};

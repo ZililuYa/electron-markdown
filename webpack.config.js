@@ -1,18 +1,41 @@
-var webpack = require('webpack');
+'use strict'
 
-module.exports = {
-    //插件项
-    //页面入口文件配置
+const path = require('path')
+const pkg = require('./package.json')
+const webpack = require('webpack')
+
+let mainConfig = {
     entry: {
-        index: __dirname + '/app/main.js'
+        main: __dirname+'/app/main.js'
     },
-    //入口文件输出配置
+    externals: Object.keys(pkg.dependencies || {}),
+    node: {
+        __dirname: false,
+        __filename: false
+    },
     output: {
-        path: __dirname,
-        filename: '[name].js'
-    }, node: {
-        fs: "empty"
+        filename: '[name].js',
+        libraryTarget: 'commonjs2',
+        path: __dirname+'/main.js'
     },
-    // target: 'node',
-    target: "electron"
-};
+    plugins: [
+        new webpack.NoEmitOnErrorsPlugin(),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': '"production"'
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        })
+    ],
+    resolve: {
+        extensions: ['.js', '.json', '.node'],
+        modules: [
+            path.join(__dirname, 'app/node_modules')
+        ]
+    },
+    target: 'electron-main'
+}
+
+module.exports = mainConfig
