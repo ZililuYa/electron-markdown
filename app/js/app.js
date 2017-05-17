@@ -1,5 +1,4 @@
 const {ipcRenderer} = require('electron');
-const markdown = require('markdown').markdown;
 
 // require('./jquery.min');
 
