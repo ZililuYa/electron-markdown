@@ -1,6 +1,6 @@
 ### electron-markdown
 
-![electron-markdown](http://i1.piimg.com/588926/218cb943cfa65af5.png)
+![electron-markdown](http://i1.piimg.com/588926/f80a5d1b91f62e1c.png)
 
 ``` bash
 $ npm install
